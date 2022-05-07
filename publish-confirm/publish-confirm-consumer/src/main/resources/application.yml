@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  rabbitmq:
+    addresses: 192.168.64.130:5672
+    username: guest
+    password: guest
+    publisher-confirm-type: correlated
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 5
+        prefetch: 1
