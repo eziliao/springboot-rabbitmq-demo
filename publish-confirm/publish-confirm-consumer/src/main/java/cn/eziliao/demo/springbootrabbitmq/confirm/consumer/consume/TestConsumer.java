@@ -20,6 +20,8 @@ import java.util.Map;
 @Component
 @Slf4j
 public class TestConsumer {
+    // 这里也声明了队列，主要是为了防止在Rabbitmq中没有或者没有先启动生产者，导致没有队列而报错问题。
+    // 如果确认声明了，这里就没必要写这么多，也可以通过使用元注解 @RabbitListener 自定义注解简化。
     @RabbitListener(bindings = {@QueueBinding(value = @Queue(name = TestQueueConstants.TEST_QUEUE, durable = "true",
             arguments = {@Argument(name = "x-dead-letter-exchange", value = MqConstants.DEAD_EXCHANGE)}),
             key = TestQueueConstants.TEST_QUEUE, exchange = @Exchange(value = MqConstants.RELIABLE_EXCHANGE,
