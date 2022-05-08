@@ -10,6 +10,7 @@
 
     <modules>
         <module>publish-confirm</module>
+        <module>delayed-message</module>
     </modules>
 
     <properties>
